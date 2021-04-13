@@ -1,0 +1,47 @@
+@page "/schedular"
+@using DevExpressSample.Books
+@inherits DevExpressSampleComponentBase
+@using DevExpressSample.Localization
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject IStringLocalizer<DevExpressSampleResource> L
+
+<h3>Books</h3>
+
+@if (schedularList.Count > 0)
+{
+<div>
+    @foreach (var item in schedularList)
+    {
+        <span>@item.Name</span>
+        <span>@item.Price</span>
+    }
+</div>
+
+    @*<DxDataGrid
+        Data="@schedularList"
+        RowInsertingAsync="@CreateBookAsync"
+        RowUpdatingAsync="@UpdateBookAsync"
+        RowRemovingAsync="@DeleteBookAsync"
+        ShowFilterRow="true"
+        PagerPageSizeSelectorVisible="true"
+        PagerAllDataRowsItemVisible="true"
+        PagerAllowedPageSizes=@(new int[] {5,10,20,40})
+        PagerNavigationMode=PagerNavigationMode.InputBox
+        CssClass="mw-1100">
+        <DxDataGridCommandColumn Width="100px"/>
+        <DxDataGridColumn Field="@nameof(SchedularDto.Name)"/>
+        <DxDataGridSpinEditColumn Field="@nameof(SchedularDto.Price)">
+            <DisplayTemplate>
+                @(((context as SchedularDto)!.Price).ToString("C2", new CultureInfo("en-US")))
+            </DisplayTemplate>
+        </DxDataGridSpinEditColumn>
+        <DxDataGridDateEditColumn Field="@nameof(SchedularDto.PublishDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D"/>
+    </DxDataGrid>*@
+
+    
+}
+else
+{
+    <span>Loading...</span>
+}
